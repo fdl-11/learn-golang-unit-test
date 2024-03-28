@@ -9,6 +9,21 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// Untuk run satu subtest saja : go test -v -run=TestSubTest/fadli
+// Untuk run semua subtest dengan nama fadli : go test -v -run=/fadli
+func TestSubTest(t *testing.T) {
+	t.Run("Fadli", func(t *testing.T) {
+		result := HelloWorld("Fadli")
+		require.Equal(t, "Hello Fadli", result, "Result should be Hello Fadli")
+	})
+
+	t.Run("Darusalam", func(t *testing.T) {
+		result := HelloWorld("Darusalam")
+		require.Equal(t, "Hello Darusalam", result, "Result should be Hello Darusalam")
+	})
+
+}
+
 // Jika terdapat function TestMain, maka secara otomatis Go-Lang akan mengeksekusi function ini tiap kali akan menjalankan unit test di sebuah package
 // TestMain dieksekusi hanya sekali per Go-Lang package, bukan per tiap function unit test
 func TestMain(m *testing.M) {
