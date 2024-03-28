@@ -9,6 +9,38 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// Table Test
+func TestTableHelloWorld(t *testing.T) {
+	tests := []struct{
+		name string
+		request string
+		expected string
+	}{
+		{
+			name: "Fadli",
+			request: "Fadli",
+			expected: "Hello Fadli",
+		},
+		{
+			name: "Darusalam",
+			request: "Darusalam",
+			expected: "Hello Darusalam",
+		},
+		{
+			name: "Sragen",
+			request: "Sragen",
+			expected: "Hello Sragen",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := HelloWorld(test.request)
+			require.Equal(t, test.expected, result)
+		})
+	}
+}
+
 // Untuk run satu subtest saja : go test -v -run=TestSubTest/fadli
 // Untuk run semua subtest dengan nama fadli : go test -v -run=/fadli
 func TestSubTest(t *testing.T) {
