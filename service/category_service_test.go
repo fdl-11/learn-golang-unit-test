@@ -25,7 +25,7 @@ func TestCategoryService_GetSuccess(t *testing.T) {
 		Id : "1",
 		Name : "Laptop",
 	}
-	categoryRepository.Mock.On("findById", "2").Return(category)
+	categoryRepository.Mock.On("FindById", "2").Return(category)
 
 	result, err := categoryService.Get("2")
 	assert.Nil(t, err)
