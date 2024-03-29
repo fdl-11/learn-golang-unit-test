@@ -9,26 +9,38 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+/*
+~ Running semua Benchmark dan Unit Test 			>>  go test -v -bench=.
+~ Running semua Benchmarknya saja 					>>  go test -v -run=UnitTestYgTidakAda -bench=.
+~ Running satu Benchmark tertentu 					>>  go test -v -run=UnitTestYgTidakAda -bench=NamaBenchmarkTest
+~ Running semua Benchmark di root / semua modul		>>  go test -v -run=UnitTestYgTidakAda -bench=. ./...
+*/
+func BenchmarkHelloWorld(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Fadli")
+	}
+}
+
 // Table Test
 func TestTableHelloWorld(t *testing.T) {
-	tests := []struct{
-		name string
-		request string
+	tests := []struct {
+		name     string
+		request  string
 		expected string
 	}{
 		{
-			name: "Fadli",
-			request: "Fadli",
+			name:     "Fadli",
+			request:  "Fadli",
 			expected: "Hello Fadli",
 		},
 		{
-			name: "Darusalam",
-			request: "Darusalam",
+			name:     "Darusalam",
+			request:  "Darusalam",
 			expected: "Hello Darusalam",
 		},
 		{
-			name: "Sragen",
-			request: "Sragen",
+			name:     "Sragen",
+			request:  "Sragen",
 			expected: "Hello Sragen",
 		},
 	}
