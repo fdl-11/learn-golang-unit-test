@@ -161,3 +161,28 @@ func TestHelloWorldDarusalam(t *testing.T) {
 		t.Fatal("Result should be Hello Darusalam")
 	}
 }
+
+func Iterative(n int) {
+	for i := n; i >= 0; i-- {
+        // fmt.Println(i)
+    }
+}
+
+func Recursive(n int) {
+	if n >= 0 {
+		// fmt.Println(n)
+        Recursive(n - 1)
+    }
+}
+
+func BenchmarkIterative(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+        Iterative(20)
+    }
+}
+
+func BenchmarkRecursive(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+        Recursive(20)
+    }
+}
